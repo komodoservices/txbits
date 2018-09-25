@@ -370,7 +370,7 @@ class Wallet(rpc: JsonRpcHttpClient, currency: CryptoCurrency, nodeId: Int, para
   }
 
   private def getNewAddress = {
-    rpc.invoke("getnewaddress", Array(), classOf[String])
+    rpc.invoke("z_getnewaddress", Array(), classOf[String])
   }
 
   private def keyPoolRefill() = {
@@ -382,7 +382,7 @@ class Wallet(rpc: JsonRpcHttpClient, currency: CryptoCurrency, nodeId: Int, para
   }
 
   private def sendMany(withdrawals: java.util.Map[String, BigDecimal]) = {
-    rpc.invoke("sendmany", Array("", withdrawals), classOf[String])
+    rpc.invoke("z_sendmany", Array("address":"", "amount": withdrawals), classOf[String])
   }
 
   def receive = {
